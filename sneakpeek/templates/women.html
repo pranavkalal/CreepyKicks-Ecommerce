@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="sort-dropdown">
+    <select id="sortProducts" onchange="sortProducts()">
+        <option value="featured">Featured</option>
+        <option value="low-high">Price (Low to High)</option>
+        <option value="high-low">Price (High to Low)</option>
+    </select>
+</div>
+<section id="featured-products" class="mt-5">
+    <h3 class="text-center">Women's Sneakers</h3>
+    <div class="row">
+      {% for product in products %}
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+        <div class="card card-medium">
+          <a href="{{ url_for('main.item_detail', product_id=product.id) }}">
+            <img src="{{ url_for('static', filename='images/' + product.image_url) }}" class="card-img-top" alt="{{ product.name }}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">${{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</section>
+{% endblock %}

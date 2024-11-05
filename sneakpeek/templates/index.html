@@ -1,0 +1,88 @@
+
+      {% extends 'base.html' %}
+
+      {% block head %}
+      <div class="container-fluid bg-black header-container">
+      
+        <img src="{{ url_for('static', filename='images/creeepyheader.webp') }}" alt="Exclusive in Asics" class="image-fluid header-image">
+        
+      </div>
+    <div class="header-message text-center">
+      <div class="welcome-container bg-black text-white text-center py-2">
+      <h2>Welcome to Creepy Kicks</h2>
+      <p>Exclusive Shoes for  our Sneakerheads</p>
+      </div>
+    </div>
+    
+      {% endblock %}
+
+{% block main %}
+        <!-- <main class="container-fluid px-4 mt-3"> -->
+            <section id="brands" class="text-center">
+                <h3> Top Brands</h3>
+                <div class="row justify-content-center align-items-center">
+                  <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <div class="card card-small">
+                    <img src="{{ url_for('static', filename='images/nikejordanlogo.webp') }}" alt="Nike" class="img-fluid">
+                  </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <div class="card card-small">
+                    <img src="{{ url_for('static', filename='images/ewBlogo.webp') }}" alt="New Balance" class="img-fluid">
+                  </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <div class="card card-small">
+                    <img src="{{ url_for('static', filename='images/adidaslogo.webp') }}" alt="Adidas" class="img-fluid">
+                  </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <div class="card card-small">
+                    <img src="{{ url_for('static', filename='images/ascicslogo.webp') }}" alt="Asics" class="img-fluid">
+                  </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <div class="card card-small">
+                    <img src="{{ url_for('static', filename='images/Ugglogo.webp') }}" alt="Ugg" class="img-fluid">
+                  </div>
+                  </div>
+                  <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <div class="card card-small">
+                    <img src="{{ url_for('static', filename='images/crocs_logo.webp') }}" alt="Crocs" class="img-fluid">
+                  </div>
+                  </div>
+                
+                </div>
+              </section>
+          
+            <!-- Featured Products -->
+            <section id="featured-products" class="mt-5">
+              <h3 class="text-center">Sneaker's of the Week</h3>
+              <div class="row">
+                {% for product in products %}
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                  <div class="card card-medium">
+                    <a href="{{ url_for('main.item_detail', product_id=product.id) }}">
+                      <img src="{{url_for('static', filename='images/'+product.image_url)}}" class="card-img-top" alt="{{ product.name }}"></a>
+                    <div class="card-body">
+                      <h5 class="card-title">{{ product.name }}</h5>
+                      <p class="card-text">${{ product.price }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                
+                
+              </div>
+            </section>
+       
+  
+          {% endblock %}
+          
+          
+            
+            
+          
+          
+
+        

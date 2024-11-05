@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreepyKicks - Exclusive Shoes</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.1">
+</head>
+<body>
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/Creepylogo1.jpg') }}" alt="Sneakpeek Logo" height="60"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('main.men') }}">Men</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('main.women') }}">Women</a>
+            </li>
+            <li class="nav-item active dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Brands
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ url_for('main.brand_products', brand_name='Nike') }}">Nike</a>
+                <a class="dropdown-item" href="{{ url_for('main.brand_products', brand_name='Adidas') }}">Adidas</a>
+                <a class="dropdown-item" href="{{ url_for('main.brand_products', brand_name='NB') }}">New Balance</a>
+              </div>
+            </li>
+            
+          </ul>
+            <!-- <form class="form-inline my-2 my-lg-0"> -->
+                <form action="{{ url_for('main.search') }}" method="get" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+             <div class="navbar-right">
+              <a href="{{ url_for('main.cart') }}" class="cart-icon px-4">
+                  <img src="{{ url_for('static', filename='images/web.png') }}" alt="Cart">
+              </a>
+          </div>
+        </div>
+      </nav>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% block head %}
+        
+{% endblock %}
+      
+
+<div class="container-fluid px-4 mt-3">
+    <main>
+        {% block main %}
+        
+        {% endblock %}
+    </main>
+</div>
+
+
+<footer class="bg-black text-white pt-4 mt-4">
+    <div class="container-fluid px-5">
+       <div class="row">
+       
+         <div class="col-lg-3 col-md-6">
+           <h5>Shopping with CreepyKicks</h5>
+           <ul class="list-unstyled">
+             <li><a href="#" class="text-white">Delivery</a></li>
+             <li><a href="#" class="text-white">Returns</a></li>
+             <li><a href="#" class="text-white">Products & Stock</a></li>
+             <li><a href="#" class="text-white">Size Guides</a></li>
+             <li><a href="#" class="text-white">Find a Store</a></li>
+             <li><a href="#" class="text-white">Creepy Blog</a></li>
+           </ul>
+         </div>     
+        
+        <div class="col-lg-3 col-md-6">
+         <h5>Customer Care</h5>
+           <ul class="list-unstyled">
+            <li><a href="#" class="text-white">FAQs</a></li>
+            <li><a href="#" class="text-white">Contact Us</a></li>
+           </ul>
+         </div>
+   
+         
+         <div class="col-lg-3 col-md-6">
+           <h5>About</h5>
+           <ul class="list-unstyled">
+             <li><a href="#" class="text-white">About Us</a></li>
+            <li><a href="#" class="text-white">Career Jobs</a></li>
+             <li><a href="#" class="text-white">Affiliates</a></li>
+            <li><a href="#" class="text-white">SignUp</a></li>
+           </ul>
+         </div>
+   
+        
+         <div class="col-lg-3 col-md-6">
+           <h5>Legal</h5>
+           <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Terms & Conditions</a></li>
+             <li><a href="#" class="text-white">Privacy Policy</a></li>
+             <li><a href="#" class="text-white">Accessibility</a></li>
+           </ul>
+        </div>
+   
+       </div>
+       <hr class="footer-divider">
+   
+     
+      <div class="row mt-4">
+         <div class="col-md-6">
+           <p>Visit our corporate website at <a href="https://github.com/pranavkalal" class="text-white">www.creepykicks.com</a></p>
+           <p>&copy; 2024 Creepy. All rights reserved.</p>
+         </div>
+      
+         <div class="col-md-6 text-right">
+      <p>We accept the following payment methods:</p>
+       <img src="{{ url_for('static', filename='images/paymentapps.png') }}" alt="Payment Methods" class="img-fluid payment">
+         </div>
+       </div>
+     </div>
+     
+   </footer>
+   
+   
+
+ <!-- Bootstrap JS (Optional) -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

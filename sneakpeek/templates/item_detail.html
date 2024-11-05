@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+  {% block main %}
+  <section class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-6">
+         
+          <img src="{{url_for('static', filename='images/'+product.image_url)}}" alt="{{ product.name }}" class="img-fluid">
+            
+           
+        </div>
+        
+        <div class="col-md-6">
+            <h2>{{ product.name }}</h2>
+            <p class="text-muted">{{ product.category }}</p>
+            <p class="price">${{ product.price }}</p>
+            
+            
+            <div class="sizes mt-3">
+                <h5>Select Size</h5>
+                <div class="d-flex flex-wrap">
+                    <button class="btn btn-outline-dark m-1">US 6</button>
+                    <button class="btn btn-outline-dark m-1">US 6.5</button>
+                    <button class="btn btn-outline-dark m-1">US 7</button>
+                    <button class="btn btn-outline-dark m-1">US 8</button>
+                    <button class="btn btn-outline-dark m-1">US 9</button>
+                    <button class="btn btn-outline-dark m-1">US 10</button>
+                    <button class="btn btn-outline-dark m-1">US 11</button>
+                    <button class="btn btn-outline-dark m-1">US 12</button>
+                </div>
+                
+            </div>
+            
+            <div class="cart-button mt-3">
+              <form action="{{ url_for('main.cart', product_id=product.id) }}" method="POST">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <button type="submit" class="btn btn-lg btn-outline-success my-2 my-sm-0">Add to Basket</button>
+            </form>
+          </div>
+          
+            <div class="product-description mt-3">
+                <p >
+                  {{ product.description|safe }}
+                </p>
+                
+            </div>
+        
+        </div>
+    </div>
+  </section>
+  {% endblock %}
+          
+          
+          
+
