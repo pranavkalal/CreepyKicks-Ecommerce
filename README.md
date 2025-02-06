@@ -17,4 +17,4 @@ Sneakpeek is an e-commerce platform dedicated to providing exclusive sneaker col
 - **Bootstrap**: For responsive design to ensure the website works on all devices.
 - **Jinja2**: Templating engine for rendering views.
 
-
+## Master Branch for files
